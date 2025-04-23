@@ -167,8 +167,8 @@ async def process_video_request(client, message):
 
         # Extract details
         file_name = response.get("file_name", "Unknown")
-        file_size = response.get("file_size", "Unknown")
-        download_url = response.get("download_url")
+        file_size = response.get("size", "Unknown")
+        download_url = response.get("link")
         thumbnail = response.get("thumbnail") or fetch_video_details(video_url) or "https://envs.sh/L75.jpg"
 
         # Main player
@@ -190,7 +190,7 @@ async def process_video_request(client, message):
         if web_app_2:
             buttons.append([InlineKeyboardButton("♡ PLAY VIDEO 2 ♡", web_app=web_app_2)])
         
-        buttons.append([InlineKeyboardButton("♡ Download ♡", url=download_url)])
+        buttons.append([InlineKeyboardButton("♡ Download ♡", url=link)])
         buttons.append([InlineKeyboardButton("♡ SUPPORT ♡", url='https://t.me/Ur_rishu_143')])
         buttons.append([InlineKeyboardButton("♡ All bots ♡", url='https://t.me/vip_robotz')])
 
@@ -200,7 +200,7 @@ async def process_video_request(client, message):
         caption = (
             f"**Dear: 🤩 {message.from_user.mention}\n\n"
             f"📦 File Name: `{file_name}`\n"
-            f"📁 Size: `{file_size}`\n\n"
+            f"📁 Size: `{size}`\n\n"
             f"Here's your video:**"
         )
 
