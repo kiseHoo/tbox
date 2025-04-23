@@ -183,14 +183,19 @@ async def process_video_request(client, message):
         else:
             web_app_2 = None
 
+
+            api3 = f"https://tight-leaf-6d92.brendanav492.workers.dev/?id={terabox_id}"
+               web_app_3 = WebAppInfo(url=api3)
+        else:
+            web_app_3 = None
         # Inline buttons
         buttons = [
-            [InlineKeyboardButton("♡ PLAY VIDEO 1 ♡", web_app=web_app_1)],
+            [InlineKeyboardButton("♡ PLAY VIDEO 1 ♡", web_app=web_app_3)],
         ]
         if web_app_2:
             buttons.append([InlineKeyboardButton("♡ PLAY VIDEO 2 ♡", web_app=web_app_2)])
         
-        buttons.append([InlineKeyboardButton("♡ Download ♡", url=download_url)])
+        buttons.append([InlineKeyboardButton("♡ PLAY VIDEO 3 ♡", web_app=web_app_1)])
         buttons.append([InlineKeyboardButton("♡ SUPPORT ♡", url='https://t.me/Ur_rishu_143')])
         buttons.append([InlineKeyboardButton("♡ All bots ♡", url='https://t.me/vip_robotz')])
 
