@@ -154,15 +154,22 @@ def extract_terabox_id(url: str) -> Optional[str]:
     match = re.search(r'/s/([a-zA-Z0-9]+)', url)
     return match.group(1) if match else None
 
+
+
 async def process_video_request(client, message):
     video_url = message.text.strip()
     await message.reply_chat_action(ChatAction.TYPING)
 
     try:
-        # Get thumbnail
-        thumbnail = fetch_video_details(video_url)
-        if not thumbnail:
-            thumbnail = "https://envs.sh/L75.jpg"
+        # Call the API
+        api_url = f"https://teradownloader.rishuapi.workers.dev/?url={video_url}"
+        response = requests.get(api_url).json()
+
+        # Extract details
+        file_name = response.get("file_name", "Unknown")
+        file_size = response.get("file_size", "Unknown")
+        download_url = response.get("download_url")
+        thumbnail = response.get("thumbnail") or fetch_video_details(video_url) or "https://envs.sh/L75.jpg"
 
         # Main player
         main_player_url = f"{TERABOX_API}{video_url}"
@@ -180,38 +187,47 @@ async def process_video_request(client, message):
         buttons = [
             [InlineKeyboardButton("♡ PLAY VIDEO 1 ♡", web_app=web_app_1)],
         ]
-
         if web_app_2:
             buttons.append([InlineKeyboardButton("♡ PLAY VIDEO 2 ♡", web_app=web_app_2)])
-
-        buttons.extend([
-            [InlineKeyboardButton('♡ SUPPORT ♡', url='https://t.me/Ur_rishu_143')],
-            [InlineKeyboardButton('♡ All bots ♡', url='https://t.me/vip_robotz')],
-        ])
+        
+        buttons.append([InlineKeyboardButton("♡ Download ♡", url=download_url)])
+        buttons.append([InlineKeyboardButton("♡ SUPPORT ♡", url='https://t.me/Ur_rishu_143')])
+        buttons.append([InlineKeyboardButton("♡ All bots ♡", url='https://t.me/vip_robotz')])
 
         markup = InlineKeyboardMarkup(buttons)
-        bot_message_text = f"**Dear: 🤩  {message.from_user.mention}\n\nHere's your video:**"
+
+        # Caption for user
+        caption = (
+            f"**Dear: 🤩 {message.from_user.mention}\n\n"
+            f"📦 File Name: `{file_name}`\n"
+            f"📁 Size: `{file_size}`\n\n"
+            f"Here's your video:**"
+        )
 
         await client.send_photo(
             chat_id=message.chat.id,
             photo=thumbnail,
-            caption=bot_message_text,
+            caption=caption,
             reply_markup=markup,
             has_spoiler=True
         )
 
-        # Dump
-        dump_text = f"From {message.from_user.mention}:\nLink: [Watch Video 1]({main_player_url})"
+        # Dump caption
+        dump_caption = (
+            f"From {message.from_user.mention}:\n"
+            f"File: `{file_name}`\n"
+            f"Size: `{file_size}`\n"
+            f"[Download Link]({download_url})"
+        )
+
         await client.send_photo(
             chat_id=DUMP_CHANNEL,
             photo=thumbnail,
-            caption=dump_text
+            caption=dump_caption
         )
 
     except requests.exceptions.RequestException as e:
         await message.reply_text(f"Error connecting to the API: {str(e)}")
-
-
 # Flask thread for monitoring
 def run_flask():
     flask_app.run(host='0.0.0.0', port=8080)
