@@ -31,7 +31,7 @@ start_time = time.time()
 mongo_client = pymongo.MongoClient(
     os.getenv(
         "MONGO_URI",
-        "mongodb+srv://Krishna:pss968048@cluster0.4rfuzro.mongodb.net/?retryWrites=true&w=majority"
+        "mongodb+srv://Teraboxdownloader:Rajubhai@cluster0.tbocw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
     )
 )
 db = mongo_client[os.getenv("MONGO_DB_NAME", "Rishu-free-db")]
