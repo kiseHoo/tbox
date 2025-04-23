@@ -14,13 +14,13 @@ from typing import Optional
 import random
 
 # Bot details from environment variables
-BOT_TOKEN = " "
+BOT_TOKEN = "6956731651:AAE9I-6IYMmLWSXgDQhfRog6lFfLBJEK8bs"
 CHANNEL_1_USERNAME = "Rishucoder"  # First channel username
 CHANNEL_2_USERNAME = "Rishu_mood"  # Second channel username
 API_HASH = "42a60d9c657b106370c79bb0a8ac560c"
 API_ID = "14050586"
 TERABOX_API = "https://terabox-player.rishuapi.workers.dev/?url="
-DUMP_CHANNEL = "-1002436700388"
+DUMP_CHANNEL = "-1002561334306"
 ADMIN_ID = int(os.getenv("ADMIN_ID", "5738579437"))  # Admin ID for new user notifications
 
 # Flask app for monitoring
