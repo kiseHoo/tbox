@@ -162,7 +162,7 @@ async def process_video_request(client, message):
 
     try:
         # Call the API
-        api_url = f"https://teradownloader.rishuapi.workers.dev/?url={video_url}"
+        api_url = f"https://teraboxdown.rishuapi.workers.dev/?url={video_url}"
         response = requests.get(api_url).json()
 
         # Extract details
