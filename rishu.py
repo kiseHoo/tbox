@@ -197,6 +197,7 @@ async def process_video_request(client, message):
             photo=thumbnail,
             caption=bot_message_text,
             reply_markup=markup,
+            has_spoiler=True
         )
 
         # Dump
