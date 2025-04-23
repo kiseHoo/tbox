@@ -15,11 +15,11 @@ import random
 
 # Bot details from environment variables
 BOT_TOKEN = " "
-CHANNEL_1_USERNAME = "Rishuteam"  # First channel username
-CHANNEL_2_USERNAME = "RishuNetwork"  # Second channel username
+CHANNEL_1_USERNAME = "Rishucoder"  # First channel username
+CHANNEL_2_USERNAME = "Rishu_mood"  # Second channel username
 API_HASH = "42a60d9c657b106370c79bb0a8ac560c"
 API_ID = "14050586"
-TERABOX_API = "https://terabox-api.mrspyboy.workers.dev/"
+TERABOX_API = "https://terabox-player.rishuapi.workers.dev/?url="
 DUMP_CHANNEL = "-1002436700388"
 ADMIN_ID = int(os.getenv("ADMIN_ID", "5738579437"))  # Admin ID for new user notifications
 
@@ -31,7 +31,7 @@ start_time = time.time()
 mongo_client = pymongo.MongoClient(
     os.getenv(
         "MONGO_URI",
-        "mongodb+srv://Teraboxdownloader:Rajubhai@cluster0.tbocw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+        "mongodb+srv://Krishna:pss968048@cluster0.4rfuzro.mongodb.net/?retryWrites=true&w=majority"
     )
 )
 db = mongo_client[os.getenv("MONGO_DB_NAME", "Rishu-free-db")]
