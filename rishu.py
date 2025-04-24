@@ -175,18 +175,13 @@ async def process_video_request(client, message):
         main_player_url = f"{TERABOX_API}{video_url}"
         web_app_1 = WebAppInfo(url=main_player_url)
 
-        # Second player using extracted ID
+    # Second player using extracted ID
         terabox_id = extract_terabox_id(video_url)
-
         if terabox_id:
-        second_player_url = f"https://ferita.tronservro.workers.dev/?id={terabox_id}"
-        web_app_2 = WebAppInfo(url=second_player_url)
-
-        api3 = f"https://tight-leaf-6d92.brendanav492.workers.dev/?id={terabox_id}"
-        web_app_3 = WebAppInfo(url=api3)
+            second_player_url = f"https://ferita.tronservro.workers.dev/?id={terabox_id}"
+            web_app_2 = WebAppInfo(url=second_player_url)
         else:
-        web_app_2 = None
-        web_app_3 = None
+            web_app_2 = None
         # Inline buttons
         buttons = [
             [InlineKeyboardButton("♡ PLAY VIDEO 1 ♡", web_app=web_app_3)],
