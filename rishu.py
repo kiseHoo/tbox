@@ -184,10 +184,10 @@ async def process_video_request(client, message):
             web_app_2 = None
         # Inline buttons
         buttons = [
-            [InlineKeyboardButton("♡ PLAY VIDEO 1 ♡", web_app=web_app_3)],
+            [InlineKeyboardButton("♡ PLAY VIDEO 1 ♡", web_app=web_app_2)],
         ]
         if web_app_2:
-            buttons.append([InlineKeyboardButton("♡ PLAY VIDEO 2 ♡", web_app=web_app_2)])
+            buttons.append([InlineKeyboardButton("♡ PLAY VIDEO 2 ♡", web_app=web_app_1)])
         
         buttons.append([InlineKeyboardButton("♡ PLAY VIDEO 3 ♡", web_app=web_app_1)])
         buttons.append([InlineKeyboardButton("♡ SUPPORT ♡", url='https://t.me/Ur_rishu_143')])
