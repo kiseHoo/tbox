@@ -123,17 +123,21 @@ async def start_message(client, message):
         "https://graph.org/file/3514efaabe774e4f181f2.jpg"
     ]
     random_image = random.choice(image_urls)
+    
+    # Inline buttons for channel join
+    join_button_1 = InlineKeyboardButton("♡ Support ♡", url=f"https://t.me/Ur_rishu_143")
+    join_button_2 = InlineKeyboardButton("♡ All Bots ♡", url=f"https://t.me/vip_robotz")
+    support_button = InlineKeyboardButton('♡ Support ♡', url='https://t.me/Ur_support07')
 
-# Inline buttons with stylized text
-join_button_1 = InlineKeyboardButton("˹ υᴘᴅᴧᴛє ˼", url="https://t.me/Ur_rishu_143")
-join_button_2 = InlineKeyboardButton("˹ sυᴘᴘσꝛᴛ ˼", url="https://t.me/ur_support07")
-join_button_3 = InlineKeyboardButton("˹ ᴧʟʟ ᴧᴘɪ ˼", url="https://t.me/RishuApi")
-join_button_4 = InlineKeyboardButton("˹ ᴧʟʟ ʙᴏᴛ ˼", url="https://t.me/Vip_robotz/4")
+    markup = InlineKeyboardMarkup([[join_button_1], [join_button_2], [support_button]])
 
-markup = InlineKeyboardMarkup([
-    [join_button_1, join_button_2],
-    [join_button_3, join_button_4]
-])
+    # Send the welcome message with the random image
+    await client.send_photo(
+        chat_id=message.chat.id,
+        photo=random_image,
+        caption=f"**♡ Welcome: {message.from_user.mention} **\n\n**♡Send me a TeraBox URL to Get Started. ♡**\n\n╔═════════════════╗\n║ ➻**ʟᴏᴠᴇ ᴡɪᴛʜ** ➪ [꯭꯭↬꯭ᬃ꯭ ⃪꯭ ꯭⁢⁣⁤⁣⁣⁢⁣⁤⁢⁤⁣⁢⁤⁣⁤᪳᪳🇷꯭𝚰𝛅꯭꯭ʜ꯭֟፝፝֟ᴜ ꯭꯭༗꯭»꯭݅݅݅݅𓆪](https://t.me/ur_rishu_143)\n║\n╚═════════════════╝",
+        reply_markup=markup
+    )
 
     # Send the welcome message with the random image
     await client.send_photo(
