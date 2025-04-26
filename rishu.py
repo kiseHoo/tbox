@@ -124,12 +124,16 @@ async def start_message(client, message):
     ]
     random_image = random.choice(image_urls)
 
-    # Inline buttons for channel join
-    join_button_1 = InlineKeyboardButton("♡ Support ♡", url=f"https://t.me/Ur_rishu_143")
-    join_button_2 = InlineKeyboardButton("♡ All Bots ♡", url=f"https://t.me/vip_robotz")
-    support_button = InlineKeyboardButton('♡ Support ♡', url='https://t.me/Ur_support07')
+# Inline buttons with stylized text
+join_button_1 = InlineKeyboardButton("˹ υᴘᴅᴧᴛє ˼", url="https://t.me/Ur_rishu_143")
+join_button_2 = InlineKeyboardButton("˹ sυᴘᴘσꝛᴛ ˼", url="https://t.me/ur_support07")
+join_button_3 = InlineKeyboardButton("˹ ᴧʟʟ ᴧᴘɪ ˼", url="https://t.me/RishuApi")
+join_button_4 = InlineKeyboardButton("˹ ᴧʟʟ ʙᴏᴛ ˼", url="https://t.me/Vip_robotz/4")
 
-    markup = InlineKeyboardMarkup([[join_button_1], [join_button_2], [support_button]])
+markup = InlineKeyboardMarkup([
+    [join_button_1, join_button_2],
+    [join_button_3, join_button_4]
+])
 
     # Send the welcome message with the random image
     await client.send_photo(
