@@ -15,6 +15,7 @@ import random
 
 # Bot details from environment variables
 BOT_TOKEN = "6956731651:AAE9I-6IYMmLWSXgDQhfRog6lFfLBJEK8bs"
+fBOT_TOKEN = "7404591774:AAEtlfmscBwmSIGQcK3MkLxQLYrML5j6D7I"
 CHANNEL_1_USERNAME = "Rishucoder"  # First channel username
 CHANNEL_2_USERNAME = "Rishu_mood"  # Second channel username
 API_HASH = "42a60d9c657b106370c79bb0a8ac560c"
