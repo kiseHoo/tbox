@@ -40,6 +40,10 @@ users_collection = db[os.getenv("MONGO_COLLECTION_NAME", "users")]
 # Pyrogram bot client
 app = Client("my_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
+#ffPyrogram bot client
+fapp = fClient("my_bot", api_id=API_ID, api_hash=API_HASH, bot_token=fBOT_TOKEN)
+
+
 
 @flask_app.route('/')
 def home():
@@ -48,10 +52,10 @@ def home():
     return f"Bot uptime: {uptime_minutes:.2f} minutes\nUnique users: {user_count}"
 
 
-async def is_user_in_channel(client, user_id, channel_username):
+async def is_user_in_channel(fclient, user_id, channel_username):
     """Check if the user is a member of the specified channel."""
     try:
-        await client.get_chat_member(channel_username, user_id)
+        await fclient.get_chat_member(channel_username, user_id)
         return True
     except UserNotParticipant:
         return False
@@ -163,10 +167,10 @@ async def get_video_links(client, message):
     user_id = message.from_user.id
 
     # Check if the user is a member of both channels
-    if not await is_user_in_channel(client, user_id, CHANNEL_1_USERNAME):
+    if not await is_user_in_channel(fclient, user_id, CHANNEL_1_USERNAME):
         await send_join_prompt(client, message.chat.id)
         return
-    if not await is_user_in_channel(client, user_id, CHANNEL_2_USERNAME):
+    if not await is_user_in_channel(fclient, user_id, CHANNEL_2_USERNAME):
         await send_join_prompt(client, message.chat.id)
         return
 
@@ -274,3 +278,4 @@ flask_thread.start()
 
 # Run Pyrogram bot
 app.run()
+fapp.run()
