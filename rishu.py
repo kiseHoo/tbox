@@ -213,7 +213,7 @@ async def process_video_request(client, message):
     # Second player using extracted ID
         terabox_id = extract_terabox_id(video_url)
         if terabox_id:
-            second_player_url = f"https://ferita.tronservro.workers.dev/?id={terabox_id}"
+            second_player_url = f"https://areshai35.brendanav492.workers.dev/?id={terabox_id}"
             web_app_2 = WebAppInfo(url=second_player_url)
         else:
             web_app_2 = None
@@ -252,7 +252,7 @@ async def process_video_request(client, message):
             f"File: `{file_name}`\n"
             f"Size: `{file_size}`\n"
             f"Play video: [Player]({second_player_url})\n"
-            f"Play video: [Player 2]({main_player_url})"
+            f"Play video: [Player 2]({main_player_url})\n"
             f"Download Video: [Download Link]({download_url})"
         )
 
